@@ -3,10 +3,24 @@
 /AS/System/
 # Ignore build results
 /Binaries/
-# Ignore debugging configurations (Watch,...)
-/Diagnosis/
-# Ignore Temporary Safety files
-/Physical/*/*/*/DLFiles/
+# Ignore (all) debugging content
+/Diagnosis/**
+# But save the watch windows and task trace configurations (if it should stay in the repository) - optional, uncomment if needed
+#!/Diagnosis/**/
+#!/Diagnosis/**/*.PVM
+#!/Diagnosis/**/*.tc
+# Ignore CPU folder in mapp Safety - ..\{ASprojectName}\Physical\{ConfigName}\{PLCname}\mappSafety\{SafetyProjectName}\C\PLC\R\CPU
+/Physical/**/mappSafety/*/C/PLC/R/CPU/*
+# But include the required binary files
+!/Physical/**/mappSafety/*/C/PLC/R/CPU/src.st1
+!/Physical/**/mappSafety/*/C/PLC/R/CPU/tmp.sto
+# Ignore CPU folder in Legacy Safety - ..\{ASprojectName}\Physical\{ConfigName}\{PLCname}\{SafetyProjectName}\C\PLC\R\CPU
+/Physical/**/C/PLC/R/CPU/*
+# But include the required binary files
+!/Physical/**/C/PLC/R/CPU/src.st1
+!/Physical/**/C/PLC/R/CPU/tmp.sto
+# Include all (also the Safety related) .set files in the Physical folder
+!/Physical/**/*.set
 # Ignore standard temp folder
 /Temp/
 # Ignore upgrades as those are not considered part of the project source code
